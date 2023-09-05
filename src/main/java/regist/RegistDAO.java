@@ -22,12 +22,12 @@ public class RegistDAO extends JDBConnect{
 			psmt.setString(2, dto.getId());
 			psmt.setString(3, dto.getPass());
 			psmt.setString(4, dto.getTelephone());
-			psmt.setString(4, dto.getMobile());
-			psmt.setString(4, dto.getEmail());
-			psmt.setString(5, dto.getMailing());
-			psmt.setString(6, dto.getZipcode());
-			psmt.setString(7, dto.getAddr1());
-			psmt.setString(8, dto.getAddr2());
+			psmt.setString(5, dto.getMobile());
+			psmt.setString(6, dto.getEmail());
+			psmt.setString(7, dto.getOpen_email());
+			psmt.setString(8, dto.getZipcode());
+			psmt.setString(9, dto.getAddr1());
+			psmt.setString(10, dto.getAddr2());
 			result = psmt.executeUpdate();
 		}
 		catch (Exception e) {

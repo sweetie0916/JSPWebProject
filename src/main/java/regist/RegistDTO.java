@@ -9,7 +9,7 @@ public class RegistDTO {
 	private String telephone;
 	private String mobile;
 	private String email;
-	private String mailing;//이메일 수신 여부
+	private String open_email;//이메일 수신 여부
 	private String zipcode;
 	private String addr1;
 	private String addr2;
@@ -51,11 +51,11 @@ public class RegistDTO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getMailing() {
-		return mailing;
+	public String getOpen_email() {
+		return open_email;
 	}
-	public void setMailing(String mailing) {
-		this.mailing = mailing;
+	public void setOpen_email(String Open_email) {
+		this.open_email = open_email;
 	}
 	public String getZipcode() {
 		return zipcode;

@@ -1,7 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../include/global_head.jsp" %>
-
+<script>
+function formValidate(frm) {
+	
+	//이름에 입력한 값이 있는지 확인한다. 
+    if(frm.name.value==''){
+        alert("이름을 입력해주세요.");
+        frm.name.focus();
+        return false;
+    }
+	
+	//아이디에 입력한 값이 있는지 확인한다. 
+    if(frm.id.value==''){
+        alert("아이디를 입력해주세요.");
+        frm.id.focus();
+        return false;
+    }
+	
+	//비밀번호에 입력한 값이 있는지 확인한다. 
+    if(frm.pass.value==''){
+        alert("비밀번호를 입력해주세요.");
+        frm.pass.focus();
+        return false;
+    }
+}
+</script>
  <body>
 	<center>
 	<div id="wrap">
@@ -20,6 +44,7 @@
 				</div>
 
 				<p class="join_title"><img src="../images/join_tit03.gif" alt="회원정보입력" /></p>
+ 				<form name="myform" action="../member/registAction.jsp" method="post" onsubmit="return formValidate(this);">
 				<table cellpadding="0" cellspacing="0" border="0" class="join_box">
 					<colgroup>
 						<col width="80px;" />
@@ -95,8 +120,7 @@
 					<tr>
 						<th><img src="../images/join_tit09.gif" /></th>
 						<td>
-						<input type="text" name="zip1" value=""  class="join_input" style="width:50px;" />&nbsp;-&nbsp;
-						<input type="text" name="zip2" value=""  class="join_input" style="width:50px;" />
+						<input type="text" name="zipcode" value=""  class="join_input" style="width:50px;" />
 						<a href="javascript:;" title="새 창으로 열림" onclick="zipFind('zipFind', '<?=$_Common[bbs_path]?>member_zipcode_find.php', 590, 500, 0);" onkeypress="">[우편번호검색]</a>
 						<br/>
 						
@@ -107,7 +131,11 @@
 					</tr>
 				</table>
 
-				<p style="text-align:center; margin-bottom:20px"><a href="join02.jsp"><image src="../images/btn01.gif" /></a>&nbsp;&nbsp;<a href="#"><img src="../images/btn02.gif" /></a></p>
+				<p style="text-align:center; margin-bottom:20px">
+					<input type ="image" src="../images/btn01.gif" />&nbsp;&nbsp;
+					<a href="#"><img src="../images/btn02.gif" alt="취소" /></a>
+				</p>
+			</form>
 				
 			</div>
 		</div>
