@@ -4,26 +4,62 @@
 <script>
 function formValidate(frm) {
 	
-	//이름에 입력한 값이 있는지 확인한다. 
-    if(frm.name.value==''){
-        alert("이름을 입력해주세요.");
-        frm.name.focus();
-        return false;
+	//이름에 입력한 값이 있는지 확인한다.
+	if(frm.name.value == '') {
+		alert("이름을 입력해주세요.");
+		frm.name.focus();
+		return false;
+	}
+	
+	//아이디에 입력한 값이 있는지 확인한다.
+	if(frm.id.value == '') {
+		alert("아이디를 입력해주세요.");
+		frm.id.focus();
+		return false;
+	}
+	
+	//아이디는 4~12자로 입력되었는지 검증
+	if(!(frm.id.value.length>=4 && frm.id.value.length<=12)) {
+		//4~2자 사이가 아니라면
+		alert("아이디는 4~12자 사이만 가능합니다.");
+		//입력된 값을 지우고 포커스를 이동한다.
+		frm.id.value = '';
+		frm.id.focus();
+		return false;
+	}
+	
+	//아이디는 숫자로 시작할 수 없음
+    /* 0과 9의 아스키코드값은 각각 48, 57이므로 아이디의 첫글자가
+    만약 이 사이에 존재한다면 사용할 수 없는 아이디로 판단할 수 있다. */
+    //입력한 아이디와 첫번째 문자, 아스키코드를 콘솔에서 확인한다.
+	console.log(frm.id.value, frm.id.value[0],
+		frm.id.value.charCodeAt(0));
+	if(frm.id.value[0].charCodeAt(0)>=48 &&
+			frm.id.value.charCodeAt(0)<=57) {
+		alert('아이디는 숫자로 시작할 수 없습니다.');
+		frm.id.value = '';
+		frm.id.focus();
+		return false;
+	}
+	
+	//아이디는 영문+숫자의 조합으로만 사용할 수 있다. 
+    /* 아이디를 구성하는 각 문자가 소문자 a~z, 대문자 A~Z, 숫자 0~9
+    사이가 아니라면 잘못된 문자가 포함된 경우이므로 전송을 중단한다.*/
+    
+    //아이디의 길이만큼 반복한다.
+    for(var i=0 ; i<frm.id.value.length ; i++) {
+    	if(!((frm.id.value[i]>='a' && frm.id.value[i]<='z') ||
+    		(frm.id.value[i]>='A' && frm.id.value[i]<='z') ||
+    		(frm.id.value[i]>='0' && frm.id.value[i]<='9'))) {
+    		alert("아이디는 영문 및 숫자의 조합만 가능합니다.");
+    		frm.id.value='';
+    		frm.id.focus();
+    		return false;
+    	}
     }
 	
-	//아이디에 입력한 값이 있는지 확인한다. 
-    if(frm.id.value==''){
-        alert("아이디를 입력해주세요.");
-        frm.id.focus();
-        return false;
-    }
-	
-	//비밀번호에 입력한 값이 있는지 확인한다. 
-    if(frm.pass.value==''){
-        alert("비밀번호를 입력해주세요.");
-        frm.pass.focus();
-        return false;
-    }
+	/* 패스워드 입력확인부터 시작 : 주소는 안해도됨 */
+    
 }
 </script>
  <body>

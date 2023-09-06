@@ -13,7 +13,7 @@ public class RegistDAO extends JDBConnect{
 	//회원정보 입력을 위한 메서드 정의
 	public int registInsert(RegistDTO dto) {
 		int result = 0;
-		String query = "insert into regist_member values ("
+		String query = "INSERT INTO regist_member VALUES ("
 				+ " ?,?,?,?,?,?,"
 				+ " ?,?,?,? )";
 		try {
