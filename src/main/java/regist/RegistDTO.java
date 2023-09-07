@@ -14,6 +14,7 @@ public class RegistDTO {
 	private String addr1;
 	private String addr2;
 	
+	
 	//getter / setter 정의
 	public String getName() {
 		return name;
@@ -54,7 +55,7 @@ public class RegistDTO {
 	public String getOpen_email() {
 		return open_email;
 	}
-	public void setOpen_email(String Open_email) {
+	public void setOpen_email(String open_email) {
 		this.open_email = open_email;
 	}
 	public String getZipcode() {
@@ -75,4 +76,5 @@ public class RegistDTO {
 	public void setAddr2(String addr2) {
 		this.addr2 = addr2;
 	}
+	
 }

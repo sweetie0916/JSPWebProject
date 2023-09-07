@@ -3,7 +3,7 @@ package regist;
 import common.JDBConnect;
 import jakarta.servlet.ServletContext;
 
-public class RegistDAO extends JDBConnect{
+public class RegistDAO extends JDBConnect {
 
 	//DB연결을 위한 인수생성자 정의
 	public RegistDAO(ServletContext app) {
@@ -13,9 +13,8 @@ public class RegistDAO extends JDBConnect{
 	//회원정보 입력을 위한 메서드 정의
 	public int registInsert(RegistDTO dto) {
 		int result = 0;
-		String query = "INSERT INTO regist_member VALUES ("
-				+ " ?,?,?,?,?,?,"
-				+ " ?,?,?,? )";
+		String query = "INSERT INTO regist_member VALUES ( "
+					 + " ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		try {
 			psmt = con.prepareStatement(query);
 			psmt.setString(1, dto.getName());
@@ -65,6 +64,5 @@ public class RegistDAO extends JDBConnect{
 		}
 		// 중복된 아이디가 없다면 0이므로 true를 반환한다.
 		return retValue;
-		
 	}
 }
