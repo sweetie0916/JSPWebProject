@@ -9,7 +9,7 @@ String name = request.getParameter("name");			// 이름
 String id = request.getParameter("id");				// 아이디
 String pass = request.getParameter("pass");			// 비밀번호
 String telephone = request.getParameter("tel1")		// 전화번호
-				 +"-"+request.getParameter("tel2")	// 
+				 +"-"+request.getParameter("tel2")	
 				 +"-"+request.getParameter("tel3");
 String mobile = request.getParameter("mobile1")
 				 +"-"+request.getParameter("mobile2")

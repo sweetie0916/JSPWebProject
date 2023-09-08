@@ -119,20 +119,42 @@ function focusMove(thisObj, nextName, inputLen) {
 } 
 
 //아이디 중복확인 
-function id_check_person(fn){
-    if(fn.id.value==''){
+function id_check_person(){
+	const id = document.getElementById('id');
+	//입력한 아이디 값이 받아오는지 확인하는 방법
+	//console.log(id.value);
+    if(id.value==''){
         alert("아이디를 입력후 중복확인 해주세요.");
-        fn.id.focus();
+        id.focus();
     }
     else{
         //아이디 중복확인 창을 띄울때 입력한 아이디를 쿼리스트링으로 
         //넘겨준다. 
-        window.open('RegildOverlap.jsp?id='+fn.id.value, 
+        window.open('RegildOverlap.jsp?id='+id.value, 
             'idOver', 
             'width=500,height=300');
         //입력한 아이디를 수정할 수 없도록 속성을 추가한다. 
-        fn.id.readOnly = true;
+        id.readOnly = true;
     }
+}
+</script>
+
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+//우편번호 API
+function postOpen(){    
+    new daum.Postcode({
+        oncomplete: function(data) {
+            console.log(data);
+            console.log(data.zonecode);
+            console.log(data.address);
+            
+            let frm = document.myform;
+            frm.zipcode.value = data.zonecode;
+            frm.addr1.value = data.address;
+            frm.addr2.focus();
+        }
+    }).open();
 }
 </script>
  <body>
@@ -166,7 +188,7 @@ function id_check_person(fn){
 					
 					<tr>
 						<th><img src="../images/join_tit002.gif" /></th>
-						<td><input type="text" name="id"  value="" class="join_input" />&nbsp;<a onclick="id_check_person(this);" style="cursor:hand;"><img src="../images/btn_idcheck.gif" alt="중복확인"/></a>&nbsp;&nbsp;<span>* 4자 이상 12자 이내의 영문/숫자 조합하여 공백 없이 기입</span></td>
+						<td><input type="text" name="id" id="id" value="" class="join_input" />&nbsp;<a onclick="id_check_person();" style="cursor:hand;"><img src="../images/btn_idcheck.gif" alt="중복확인"/></a>&nbsp;&nbsp;<span>* 4자 이상 12자 이내의 영문/숫자 조합하여 공백 없이 기입</span></td>
 					</tr>
 					<tr>
 						<th><img src="../images/join_tit003.gif" /></th>
@@ -230,7 +252,7 @@ function id_check_person(fn){
 						<th><img src="../images/join_tit09.gif" /></th>
 						<td>
 						<input type="text" name="zipcode" value=""  class="join_input" style="width:50px;" />
-						<a href="javascript:;" title="새 창으로 열림" onclick="zipFind('zipFind', '<?=$_Common[bbs_path]?>member_zipcode_find.php', 590, 500, 0);" onkeypress="">[우편번호검색]</a>
+						<a href="javascript:;" title="새 창으로 열림" onclick="postOpen();" onkeypress="">[우편번호검색]</a>
 						<br/>
 						
 						<input type="text" name="addr1" value=""  class="join_input" style="width:550px; margin-top:5px;" /><br>
