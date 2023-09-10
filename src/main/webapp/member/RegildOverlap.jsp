@@ -1,4 +1,4 @@
-<%@page import="regist.RegistDAO"%>
+<%@page import="membership.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
@@ -11,7 +11,7 @@ musthave 계정의 regist_member 테이블에 입력한 아이디가 존재하�
 */
 //만약 중복된 아이디가 없어 사용할 수 있다면 true를 반환
 //중복된 아이디가 있다면 false 반환
-RegistDAO dao = new RegistDAO(application);
+MemberDAO dao = new MemberDAO(application);
 boolean isExist = dao.idOverlap(id);
 // 자원해제
 dao.close();
