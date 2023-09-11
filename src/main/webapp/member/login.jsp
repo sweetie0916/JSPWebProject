@@ -12,7 +12,7 @@ function validateForm(form) {
 		return false;
 	}
 	if (form.user_pw.value == "") {
-		alert("패스워드를 입력하세요.");
+		alert("비밀번호를 입력하세요.");
 		form.user_pw.focus();
 		return false;
 	}

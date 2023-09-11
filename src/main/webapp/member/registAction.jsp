@@ -5,10 +5,10 @@
     pageEncoding="UTF-8"%>
 <%
 //폼값받기
-String name = request.getParameter("name");			// 이름
-String id = request.getParameter("id");				// 아이디
-String pass = request.getParameter("pass");			// 비밀번호
-String telephone = request.getParameter("tel1")		// 전화번호
+String name = request.getParameter("name");			
+String id = request.getParameter("id");				
+String pass = request.getParameter("pass");			
+String telephone = request.getParameter("tel1")	
 		 +"-"+request.getParameter("tel2")	
 		 +"-"+request.getParameter("tel3");
 String mobile = request.getParameter("mobile1")
