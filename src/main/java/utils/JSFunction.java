@@ -16,10 +16,10 @@ public class JSFunction {
 		try{
 			// Javascript를 하나의 문자열로 정의한다.
 			String script = ""
-						+ "<script>"
-						+ "		alert('" + msg + "');"
-						+ "		location.href='" + url + "';"
-						+ "</script>";
+						  + "<script>"
+						  + "		alert('" + msg + "');"
+						  + "		location.href='" + url + "';"
+						  + "</script>";
 			// 해당 문자열을 웹브라우저에 출력한다.
 			out.print(script);
 		}
@@ -29,10 +29,10 @@ public class JSFunction {
 	public static void alertBack(String msg, JspWriter out) {
 		try {
 			String script = ""
-					+ "<script>"
-					+ "		alert('" + msg + "');"
-					+ "		history.back();"
-					+ "</script>";
+						  + "<script>"
+						  + "		alert('" + msg + "');"
+						  + "		history.back();"
+						  + "</script>";
 			out.print(script);
 		}
 		catch(Exception e) {}
@@ -51,10 +51,10 @@ public class JSFunction {
 			//PrintWriter객체를 통해 스크립트를 서블릿에서 직접 출력한다.
 			PrintWriter writer = resp.getWriter();
 			String script = ""
-						+ "<script>"
-						+ "		alert('" + msg + "');"
-						+ "		location.href='" + url + "';"
-						+ "</script>";
+									+ "<script>"
+									+ "		alert('" + msg + "');"
+									+ "		location.href='" + url + "';"
+									+ "</script>";
 			writer.print(script);
 		}
 		catch(Exception e) {}
@@ -62,13 +62,13 @@ public class JSFunction {
 	
 	public static void alertBack(HttpServletResponse resp, String msg) {
 		try {
-			resp.setContentType("text/html;charset=UTF-8");
-			PrintWriter writer = resp.getWriter();
-			String script = ""
-						  + "<script>"
-						  + "		alert('" + msg + "');"
-						  + "		history.back();"
-						  + "</script>";
+				resp.setContentType("text/html;charset=UTF-8");
+				PrintWriter writer = resp.getWriter();
+				String script = ""
+							  + "<script>"
+							  + "			alert('" + msg + "');"
+							  + "			history.back();"
+							  + "</script>";
 			writer.print(script);
 		}
 		catch(Exception e) {}

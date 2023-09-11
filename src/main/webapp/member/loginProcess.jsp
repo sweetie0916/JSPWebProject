@@ -1,3 +1,4 @@
+<%@page import="utils.JSFunction"%>
 <%@page import="membership.MemberDTO"%>
 <%@page import="membership.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -36,13 +37,9 @@ if (memberDTO.getId() != null) {
     response.sendRedirect("../main/main.jsp");
     
 }
-else {
-	//로그인에 실패한 경우
-	//request영역에 에러메세지를 저장한다. 
-    request.setAttribute("LoginErrMsg", "로그인 오류입니다.");
-	//그리고 로그인 페이지로 '포워드' 한다. 
-    request.getRequestDispatcher("login.jsp")
-		.forward(request, response);
+else { //로그인에 실패한 경우
+	//로그인 페이지로 돌아가기
+	JSFunction.alertBack(response, "아이디 또는 비밀번호를 잘못 입력했습니다.입력하신 내용을 다시 확인해주세요.");
 }
 %>
 
