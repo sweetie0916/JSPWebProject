@@ -22,18 +22,18 @@ String oraclePwd = application.getInitParameter("OraclePwd");
 MemberDAO dao = new MemberDAO(oracleDriver, oracleURL, oracleId, oraclePwd);
 /* 폼값으로 받은 아이디, 패스워드를 인수로 전달하여 로그인 처리를 위한 
 회원인증을 진행한다. 일치하는 레코드가 있다면 DTO에 저장하여 반환한다. */
-MemberDTO dto = dao.getMemberDTO(userId, userPwd);
+MemberDTO memberDTO = dao.getMemberDTO(userId, userPwd);
 //자원해제
 dao.close();
 
-if (dto.getId() != null) {
+if (memberDTO.getId() != null) {
 	//로그인에 성공한 경우
 	//session영역에 회원아이디와 이름을 저장한다. 
-    session.setAttribute("UserId", dto.getId()); 
-    session.setAttribute("UserName", dto.getName());
-    session.setAttribute("UserEmail", dto.getEmail());
+    session.setAttribute("UserId", memberDTO.getId()); 
+    session.setAttribute("UserName", memberDTO.getName());
+    session.setAttribute("UserEmail", memberDTO.getEmail());
     //그리고 메인 페이지로 '이동' 한다. 
-    response.sendRedirect("../main/main.do");
+    response.sendRedirect("../main/main.jsp");
     
 }
 else {
