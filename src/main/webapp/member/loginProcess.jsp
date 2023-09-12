@@ -10,7 +10,7 @@ String userPwd = request.getParameter("user_pw");
 //출력결과가 Console에 나온다. 
 System.out.println(userId+"="+userPwd);
 //출력결과가 웹브라우저에 나온다. 
-out.println(userId+"="+userPwd);
+//out.println(userId+"="+userPwd);
 
 /* web.xml에 입력한 컨텍스트 초기화 파라미터를 읽어온다. 해당 정보는 
 application내장객체를 사용해서 읽어올 수 있다. */
@@ -35,11 +35,12 @@ if (memberDTO.getId() != null) {
     session.setAttribute("UserEmail", memberDTO.getEmail());
     //그리고 메인 페이지로 '이동' 한다. 
     response.sendRedirect("../main/main.jsp");
+
     
 }
 else { //로그인에 실패한 경우
 	//로그인 페이지로 돌아가기
-	JSFunction.alertBack(response, "아이디 또는 비밀번호를 잘못 입력했습니다.입력하신 내용을 다시 확인해주세요.");
+	JSFunction.alertBack(response, "아이디 또는 비밀번호를 잘못 입력했습니다.\\n입력하신 내용을 다시 확인해주세요.");
 }
 %>
 

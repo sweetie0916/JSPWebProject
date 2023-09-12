@@ -5,7 +5,7 @@ import jakarta.servlet.ServletContext;
 
 public class MemberDAO extends JDBConnect {
 
-	//생성자 메서드 정의 
+		//생성자 메서드 정의 
 		//매개변수가 4개인 부모의 생성자를 호출하여 DB연결
 		public MemberDAO(String drv, String url, String id, String pw) {
 			super(drv, url, id, pw);
@@ -93,10 +93,10 @@ public class MemberDAO extends JDBConnect {
             //반환된 ResultSet객체에 정보가 있는지 확인한다. 
             if (rs.next()) {
             	//회원정보가 있다면 DTO객체에 저장한다. 
-                dto.setId(rs.getString(1));
-                dto.setPass(rs.getString(2));
-                dto.setName(rs.getString(3));
-                dto.setEmail(rs.getString(4));
+                dto.setId(rs.getString("id"));
+                dto.setPass(rs.getString("pass"));
+                dto.setName(rs.getString("name"));
+                dto.setEmail(rs.getString("email"));
             }
         }
 		catch (Exception e) {
@@ -104,4 +104,69 @@ public class MemberDAO extends JDBConnect {
 		}
 		return dto;
 	}
+    
+    //아이디 찾기
+    public String getMemberId(String uname, String uemail) {
+    	String id = null;
+    	String query = " SELECT id FROM regist_member WHERE name=? AND email=? ";
+    	try {
+    		psmt = con.prepareStatement(query);
+    		psmt.setString(1, uname);
+    		psmt.setString(2, uemail);
+    		rs = psmt.executeQuery();
+    		
+    		if (rs.next()) {
+    			id = rs.getString("id");
+    		}
+    	}  catch (Exception e) {
+    			e.printStackTrace();
+    	}
+    	
+    	return id;
+    }
+    
+    //비밀번호 찾기
+    public String getMemberPw(String uid, String uname, String uemail) {
+		String pw = null;
+		String query = " SELECT pass FROM regist_member WHERE id=? AND name=? AND email=? ";
+		try {
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, uid);
+			psmt.setString(2, uname);
+			psmt.setString(3, uemail);
+			rs = psmt.executeQuery();
+			
+			if (rs.next()) {
+				pw = rs.getString("pass");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return pw;
+	}
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

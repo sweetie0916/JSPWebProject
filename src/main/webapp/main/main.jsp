@@ -43,13 +43,8 @@ function validateForm(form) {
          <div class="main_con_left">
             <p class="main_title" style="border:0px; margin-bottom:0px;"><img src="../images/main_title01.gif" alt="로그인 LOGIN" /></p>
             <div class="login_box">
-<%
-/*
-session영역에 해당 속성값이 있는지 확인한다.
-즉 session영역에 데이터가 없다면 로그아웃 상태이므로 로그인 폼을 웹브라우저에 출력한다.
-*/
-if (session.getAttribute("UserId") == null) { 
-%>
+
+<c:if test="${ empty UserId }">
 	<form action="../member/loginProcess.jsp" method="post" name="loginFrm"
 		onsubmit="return validateForm(this);">
                <table cellpadding="0" cellspacing="0" border="0">
@@ -73,20 +68,16 @@ if (session.getAttribute("UserId") == null) {
                   <a href="../member/id_pw.jsp"><img src="../images/login_btn02.gif" alt="아이디/패스워드찾기" /></a>
                   <a href="../member/join01.jsp"><img src="../images/login_btn03.gif" alt="회원가입" /></a>
                </p>
-	</form>               
-<%
-} else {  
-   // 로그인이 된 상태에서는 회원의 이름과 로그아웃 버튼을 출려한다.
-%>
-               <!-- 로그인 후 -->
-               <p style="padding:10px 0px 10px 10px"><span style="font-weight:bold; color:#333;"><%=session.getAttribute("UserName") %>님,</span> 반갑습니다.<br />로그인 하셨습니다.</p>
+			   </form>               
+</c:if>			   
+<c:if test="${ not empty UserId }">
+            <!-- 로그인 후 -->
+               <p style="padding:10px 0px 10px 10px"><span style="font-weight:bold; color:#333;">${UserName }님,</span> 반갑습니다.<br />로그인 하셨습니다.</p>
                <p style="text-align:right; padding-right:10px;">
                   <a href=""><img src="../images/login_btn04.gif" /></a>
                   <a href="../member/logout.jsp"><img src="../images/login_btn05.gif" /></a>
                </p>
-<%
-}
-%>
+</c:if>
             </div>
          </div>
          <div class="main_con_center">

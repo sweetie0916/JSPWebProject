@@ -2,6 +2,46 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../include/global_head.jsp" %>
 
+<%
+//로그아웃을 한다.
+session.removeAttribute("UserId");
+session.removeAttribute("UserName");
+%>
+
+<script>
+//아이디 찾기
+function idFindForm(frm) {
+	if (frm.user_name.value == "") {
+		alert("이름을 입력해주세요.");
+		frm.user_name.focus();
+		return false;
+	}	
+	if (frm.user_email.value == "") {
+		alert("이메일을 입력해주세요.");
+		frm.user_email.focus();
+		return false
+	}
+} 
+
+//비밀번호 찾기
+function pwFindForm(frm) {
+	if (frm.user_id.value == "") {
+		alert("아이디를 입력해주세요.");
+		frm.user_id.focus();
+		return false;
+	}
+	if (frm.user_name.value == "") {
+		alert("이름을 입력해주세요.");
+		frm.user_name.focus();
+		return false;
+	}
+	if (frm.user_email.value == "") {
+		alert("이메일을 입력해주세요.");
+		frm.user_email.focus();
+		return false;
+	}
+} 
+</script>
 
  <body>
 	<center>
@@ -21,20 +61,27 @@
 				</div>
 				<div class="idpw_box">
 					<div class="id_box">
-						<ul style="left:60px;">
-							<li><input type="text" name="" value="" class="login_input01" /></li>
-							<li><input type="text" name="" value="" class="login_input01" /></li>
+					
+					<!-- 아이디 찾기 폼 -->
+					<form action="idFindProcess.jsp"  method="post" name="findIdFrm" onsubmit="return findIdForm(this);">
+						<ul>
+							<li><input type="text" name="user_name" value="" class="login_input01" /></li>
+							<li><input type="text" name="user_email" value="" class="login_input01" /></li>
 						</ul>
-						<a href=""><img src="../images/member/id_btn01.gif" class="id_btn" /></a>
-						<a href=""><img src="../images/login_btn03.gif" class="id_btn02" /></a>
+						<input type="image" src="../images/member/id_btn01.gif" class="id_btn" style="left: 276px" />
+						<a href="./join01.jsp"><img src="../images/login_btn03.gif" class="id_btn02" /></a>
+					</form>
 					</div>
 					<div class="pw_box">
-						<ul style="left:58px;">
-							<li><input type="text" name="" value="" class="login_input01" /></li>
-							<li><input type="text" name="" value="" class="login_input01" /></li>
-							<li><input type="text" name="" value="" class="login_input01" /></li>
+					<!-- 비밀번호 찾기 폼 -->
+					<form action="pwFindProcess.jsp" name="findPwFrm" onsubmit="return findPwForm(this);">
+						<ul>
+							<li><input type="text" name="user_id" value="" class="login_input01" /></li>
+							<li><input type="text" name="user_name" value="" class="login_input01" /></li>
+							<li><input type="text" name="user_email" value="" class="login_input01" /></li>
 						</ul>
-						<a href=""><img src="../images/member/id_btn01.gif" class="pw_btn" /></a>
+						<input type="image" src="../images/member/id_btn01.gif" class="pw_btn" style="left: 276px"/>
+					</form>
 					</div>
 				</div>
 			</div>
